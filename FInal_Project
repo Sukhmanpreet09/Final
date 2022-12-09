@@ -1,0 +1,111 @@
+####Final Project####
+
+
+#Name= Sukhmanpreet Singh
+#Student ID=8847968
+#Course= Programming
+#Purpose= This code helps in online booking of a Football court for practice basis.
+         #You just have to enter some personal details and the details of the booking such as:
+        #Location, date, time. The E-receipt provided to you will be used to make an entry in the court.
+
+
+import re
+import datetime
+
+
+def date():
+
+    Date1 = input("\nEnter the booking date in format 'dd/mm/yy' : ")
+    day, month, year = Date1.split('/')
+    isValidDate = True
+    try:
+        datetime.datetime(int(year), int(month), int(day))
+    except ValueError:
+        isValidDate = False
+
+    if(isValidDate):
+        return datetime.datetime(int(year), int(month), int(day))
+    else:
+        print("Input date is not valid..")
+        date()
+
+
+def validateEmail(email):
+    return re.match(r'[\w-]{1,20}@\w{2,20}\.\w{2,3}$', email)
+
+
+
+def checkemail():
+    email = input('\nPlease enter your email address: ')
+    valid = validateEmail(email)
+    if valid:
+        return email
+    else:
+        print("invalid email format", email)
+        checkemail() 
+
+
+def Booking___Receipt():
+
+    Receipt = []
+
+
+    firstname = input('\nPlease enter your first name: ')
+    lastname = input('\nPlease enter your last name: ')
+    Email = checkemail()
+    phone = input('\nPlease enter your phone number : ')
+    Date = date()
+    Time = input('\nEnter the time in 00:00 AM/PM format:')
+    Match = input("\nPlease Enter the location of the court :  ")
+    Additional_info = input('\nAny Additional Request for us: ')
+
+
+    Receipt.append(firstname)
+    Receipt.append(lastname)
+    Receipt.append(Email)
+    Receipt.append(phone)
+    Receipt.append(Date)
+    Receipt.append(Time)
+    Receipt.append(Match)
+    Receipt.append(Additional_info)
+
+
+   
+
+    print(" Date:", Date)
+    print(" Time:", Time)
+    print(" First Name:", firstname)
+    print(" Last Name:", lastname)
+    print(" Email:", Email)
+    print(" Phone Number:", phone)
+    print(" Chosen Location [Area/Gym]:", Match)
+    print(" Additional Notes/Requests:", Additional_info)
+    print("**********************************************************************", )
+    print("                                                                      ", )
+    print("----------------------------------------------------------------------", )
+    print("|         Thank You! for using the ONLINE Booking System             |", )
+    print("|            You have Successfully Booked a Court                    |", )
+    print("|          Have a Great Day, We will see you on the Court!!          |", )
+    print("----------------------------------------------------------------------", )
+    print("                                                                      ", )
+    print("**********************************************************************", )
+    exit()
+
+
+Booking___Receipt()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
